@@ -6,13 +6,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import sk.upjs.nosql_data_source.entity.Studium;
 public class MongoStudium implements Serializable {
 	private static final long serialVersionUID = 8448542295643128028L;
 	private Long id;
-	private Long zaciatokStudia;
-	private Long koniecStudia;
+	private Date zaciatokStudia;
+	private Date koniecStudia;
 	private MongoStudijnyProgram studijnyProgram;
 	
 	public static MongoStudium generateMongoStudium(Studium studium) {
@@ -20,8 +21,8 @@ public class MongoStudium implements Serializable {
 		ms.setId(studium.getId());
 		SimpleDateFormat dateformat = new SimpleDateFormat("dd.mm.yyyy");
 		try {
-			ms.setZaciatokStudia(dateformat.parse(studium.getZaciatokStudia()).getTime());
-			ms.setKoniecStudia(dateformat.parse(studium.getKoniecStudia()).getTime());
+			ms.setZaciatokStudia(dateformat.parse(studium.getZaciatokStudia()));
+			ms.setKoniecStudia(dateformat.parse(studium.getKoniecStudia()));
 		} catch (ParseException e) {
 			// ak sa datum neda parsovat resp je prazdny pokracujeme bez vyhodenia vynimky
 		}
@@ -37,16 +38,16 @@ public class MongoStudium implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Long getZaciatokStudia() {
+	public Date getZaciatokStudia() {
 		return zaciatokStudia;
 	}
-	public void setZaciatokStudia(Long zaciatokStudia) {
+	public void setZaciatokStudia(Date zaciatokStudia) {
 		this.zaciatokStudia = zaciatokStudia;
 	}
-	public Long getKoniecStudia() {
+	public Date getKoniecStudia() {
 		return koniecStudia;
 	}
-	public void setKoniecStudia(Long koniecStudia) {
+	public void setKoniecStudia(Date koniecStudia) {
 		this.koniecStudia = koniecStudia;
 	}
 	public MongoStudijnyProgram getStudijnyProgram() {

@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.repository.Query;
 
 import sk.upjs.nosql_mongo_zadanie.entity.MongoStudent;
 
-public interface MongoDBRepository extends MongoRepository<MongoStudent, Long>{
+public interface StudentRepository extends MongoRepository<MongoStudent, Long>{
 	
     List<MongoStudent> findByPriezvisko(String priezvisko);
     List<MongoStudent> findAll();
@@ -17,6 +17,4 @@ public interface MongoDBRepository extends MongoRepository<MongoStudent, Long>{
     		+ " 'skratkaakadtitul' : 1,"
     		+ " }")
     List<MongoStudent> findNamesByAcademicTitle(String title);
-
-
 }

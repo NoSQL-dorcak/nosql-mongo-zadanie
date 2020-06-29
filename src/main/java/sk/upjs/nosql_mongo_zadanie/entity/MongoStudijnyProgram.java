@@ -3,12 +3,14 @@ package sk.upjs.nosql_mongo_zadanie.entity;
 import java.io.Serializable;
 
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import sk.upjs.nosql_data_source.entity.StudijnyProgram;
 
 public class MongoStudijnyProgram implements Serializable {
 	private static final long serialVersionUID = 911661511583476510L;
 	private Long id;
+//	@Indexed
 	private String skratka;
 	private String popis;
 	
